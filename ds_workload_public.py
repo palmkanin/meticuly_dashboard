@@ -72,6 +72,8 @@ full_log_merge.insert(2, temp_col.name,temp_col)
 full_log_merge.columns = full_log_merge.columns.str.replace('em_code','actual_designer')
 
 display_log = full_log_merge.iloc[:,:-2].copy()
+display_log_2 = display_log.loc[:, ~display_log.columns.isin(['start', 'end'])]
+
 
 # --- Show Current Session
 current_log = display_log[display_log['running'] == True]
@@ -99,7 +101,7 @@ st.subheader('Current Session')
 st.dataframe(group_current_log,width=450)
 
 with st.expander('Click to see full log.'):
-    st.dataframe(display_log)
+    st.dataframe(display_log_2)
 st.subheader('#')
 
 
