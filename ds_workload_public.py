@@ -244,15 +244,21 @@ for i in range(len(ds_list)):
         total_dur_o = total_design_o + total_revision_o + total_manu_o
 
         # --- Display -----------------------------------------------------------------------
-        st.write('###')
-        st.caption(f'from {start_date_f} - {end_date_f}')
+#         st.write('###')
+#         st.caption(f'from {start_date_f} - {end_date_f}')
         st.write('###')
         
         block1, block2 = st.columns(2, gap="small")
         with block1:
             st.subheader(f'{ds_list[i]} Workload Summary ')
+            st.caption(f'from {start_date_f} - {end_date_f}')
         with block2:
             st.subheader('status: '+ mood)
+            
+            mood_info = {'mood': ['🌙', '😄','🙂','😐','🙁','😵','🤢'], 'details': ['0 %', '< 20 %','20 - 40 %','40 - 60 %','60 - 80 %','80 - 100 %','> 100 %']}
+            mood_table = pd.DataFrame(data=mood_info)
+            with st.expander('status info'):
+                st.table(mood_table)
         
         st.write('###')
 
@@ -321,19 +327,17 @@ for i in range(len(ds_list)):
                 st.dataframe(result) # --- expander data
 
 
-
-##### Refresh -----------------------------------------
 st.markdown("""---""")
+##### Refresh -----------------------------------------
+# path = os.getcwd()+'/monday_fetch.py'
 
-path = os.getcwd()+'/monday_fetch.py'
-
-if st.button('Fetch Data'):
-    with st.spinner('Fetching Monday Data...'):
-        if subprocess.run([sys.executable, 'monday_fetch.py']):
-            st.success('Success')
-            st.experimental_rerun()
-        else:
-            st.error('Error to fetch data')
+# if st.button('Fetch Data'):
+#     with st.spinner('Fetching Monday Data...'):
+#         if subprocess.run([sys.executable, 'monday_fetch.py']):
+#             st.success('Success')
+#             st.experimental_rerun()
+#         else:
+#             st.error('Error to fetch data')
 
 #### --------------------------------------------------
 
