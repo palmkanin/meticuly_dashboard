@@ -91,7 +91,7 @@ group_current_log['session_duration'] = group_current_log['session_duration'].ma
 group_current_log = group_current_log[['actual_designer','process','session_duration']]
 
 # --- Title -------------------------------------------------------------------------------------------------------------------------------
-st.title("Design Workload Monitoring! :desktop_computer:")
+st.title("Design Workload Monitoring :desktop_computer:")
 st.write('###')
 
 # --- Log Display
