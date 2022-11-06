@@ -203,7 +203,7 @@ for i in range(len(ds_list)):
             ## -- Ds Loads Criteria
             ds_loadss = (total_dur_sum / total_bday_loads) * 100
             mooda = ''
-            if ds_loadss = 0:
+            if ds_loadss == 0:
                 mooda = '🌙'
             elif ds_loadss <= 20:
                 mooda = '😄'
