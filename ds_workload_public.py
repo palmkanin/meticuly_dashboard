@@ -349,8 +349,19 @@ total_run = (end - start)
 st.markdown(f'Total running time: {total_run:.3f} seconds with {full_log_merge.shape[0]} results.')
 ### ------------------ ###
 
+# -- Remove Footer
+hide_footer_style  =  '''
+<style>
+.reportview-container .main footer (visibility: hidden;} 
+'''
+st.markdown (hide_footer_style, unsafe_allow_html=True)
 
-
+# --- Remove Menus
+hide_menu_style = '''
+<style>
+#MainMenu {visibility: hidden;}
+'''
+st.markdown (hide_menu_style , unsafe_allow_html=True)
 
 
 
