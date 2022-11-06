@@ -12,6 +12,7 @@ import numpy as np
 import os
 import sys
 import requests
+from PIL import Image
 
 
 ### --- Time Track --- ###
@@ -93,6 +94,17 @@ group_current_log['session_duration'] = group_current_log['session_duration'].ma
 group_current_log = group_current_log[['actual_designer','process','session_duration']]
 
 # --- Title -------------------------------------------------------------------------------------------------------------------------------
+## -- Page Config
+icon = Image.open('https://github.com/palmkanin/meticuly_dashboard/blob/main/images/Meticuly-Pure_Logo.png')
+
+st.set_page_config(
+    page_title="Design Workload Monitoring :desktop_computer:",
+    page_icon= icon,
+    layout='centered'
+)
+
+
+
 st.title("Design Workload Monitoring :desktop_computer:")
 st.write('###')
 
@@ -362,7 +374,5 @@ hide_menu_style = '''
 #MainMenu {visibility: hidden;}
 '''
 st.markdown (hide_menu_style , unsafe_allow_html=True)
-
-
 
 
