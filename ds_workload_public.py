@@ -203,7 +203,9 @@ for i in range(len(ds_list)):
             ## -- Ds Loads Criteria
             ds_loadss = (total_dur_sum / total_bday_loads) * 100
             mooda = ''
-            if ds_loadss <= 20:
+            if ds_loadss = 0:
+                mooda = '🌙'
+            elif ds_loadss <= 20:
                 mooda = '😄'
             elif ds_loadss <= 40:
                 mooda = '🙂'
@@ -214,9 +216,7 @@ for i in range(len(ds_list)):
             elif ds_loadss <= 100:
                 mooda = '😵'
             elif ds_loadss > 100:
-                mooda = '🤢'
-            else:
-                mooda = '🌙'
+                mooda = '🤢'                
 
             ## -- format date
             start_date_f = datetime.strptime(start_date, '%Y-%m-%d')
