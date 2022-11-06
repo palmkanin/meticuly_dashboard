@@ -95,10 +95,10 @@ group_current_log = group_current_log[['actual_designer','process','session_dura
 
 # --- Title -------------------------------------------------------------------------------------------------------------------------------
 ## -- Page Config
-icon = Image.open('/images/Meticuly-Pure_Logo.png')
+
 st.set_page_config(
     page_title="Design Workload Monitoring",
-    page_icon= icon,
+    page_icon= '🖥',
     layout='wide'
 )
 
