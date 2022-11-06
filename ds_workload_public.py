@@ -194,8 +194,8 @@ for i in range(len(ds_list)):
             total_dur_sum = x_frame_sum['total_dur'].sum()
             
             ## -- Business Day
-#             bday = pd.bdate_range(start_date, end_date) --# some error when use busniness day
-            bday = pd.date_range(start_date, end_date)
+            bday = pd.bdate_range(start_date, end_date) --# some error when use busniness day
+#             bday = pd.date_range(start_date, end_date)
 
             bday_count = len(bday)
             total_bday_loads = bday_count * 8
