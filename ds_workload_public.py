@@ -358,7 +358,7 @@ st.markdown("""---""")
 ### --- Time Track --- ###
 end = time.time()
 total_run = (end - start)
-st.markdown(f'Total running time: {total_run:.3f} seconds with {full_log_merge.shape[0]} results.')
+st.markdown(f'Total running time: {total_run:.3f} seconds with {full_log_merge.shape[0]:,} results.')
 ### ------------------ ###
 
 # -- Remove Footer
