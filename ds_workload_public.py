@@ -99,7 +99,7 @@ group_current_log = group_current_log[['actual_designer','process','session_dura
 st.set_page_config(
     page_title="Design Workload Monitoring",
     page_icon= '🖥',
-    layout='wide'
+    layout='centered'
 )
 
 
