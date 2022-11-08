@@ -85,6 +85,7 @@ group_current_log = group_current_log.reset_index()
 group_current_log = group_current_log.iloc[:,:-2]
 group_current_log = group_current_log.set_index('co_num')
 today = pd.Timestamp.now() - timedelta(hours=7)
+st.write(pd.Timestamp.now())
 group_current_log['today'] = today
 group_current_log['start'] = group_current_log['start'].str.replace(' ', 'T')
 group_current_log['start'] = group_current_log['start'].astype('datetime64[ns]')
