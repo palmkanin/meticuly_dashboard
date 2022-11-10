@@ -269,13 +269,13 @@ for i in range(len(ds_list)):
             nday = pd.date_range(start_date, end_date)
             nday_count = len(nday)
             
-            
-            
+        
 #             st.write(nday_count)
 #             st.write(bday_count)
 #             num_nday = nday_count - bday_count
 #             num_nday = abs(num_nday)
 #             st.caption(f'selected {len(nday)} days ( {num_nday} normal days | {bday_count} work days)')
+            st.caption(f'selected {nday_count} days')
             
         with block2:
             st.subheader('status: '+ mood)
