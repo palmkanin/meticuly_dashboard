@@ -267,7 +267,7 @@ for i in range(len(ds_list)):
             st.subheader(f'{ds_list[i]} Workload Summary ')
             st.caption(f'from {start_date_f} - {end_date_f}')
             nday = pd.date_range(start_date, end_date)
-            st.caption(f'selected {nday} days')
+            st.caption(f'selected {len(nday)} days')
             
         with block2:
             st.subheader('status: '+ mood)
