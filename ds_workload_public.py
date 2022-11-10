@@ -267,7 +267,8 @@ for i in range(len(ds_list)):
             st.subheader(f'{ds_list[i]} Workload Summary ')
             st.caption(f'from {start_date_f} - {end_date_f}')
             nday = pd.date_range(start_date, end_date)
-            num_nday = abs(len(nday) - len(bday))
+            num_nday = len(nday) - len(bday)
+            num_nday = abs(num_nday)
             num_bday = len(bday)
             st.caption(f'selected {len(nday)} days ( {num_nday} normal days | {num_bday} work days)')
             
