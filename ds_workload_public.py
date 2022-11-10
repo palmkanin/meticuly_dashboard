@@ -266,6 +266,9 @@ for i in range(len(ds_list)):
         with block1:
             st.subheader(f'{ds_list[i]} Workload Summary ')
             st.caption(f'from {start_date_f} - {end_date_f}')
+            sub_day = end_date_f - start_date_f
+            st.caption(f'{sub_day.days + 1} days')
+            
         with block2:
             st.subheader('status: '+ mood)
             
