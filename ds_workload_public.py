@@ -1,3 +1,4 @@
+!pip install fsspec
 # --- Import
 from datetime import datetime, timedelta
 from operator import index, mod
