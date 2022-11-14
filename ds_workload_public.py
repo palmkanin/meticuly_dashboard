@@ -17,7 +17,7 @@ cwd = os.getcwd
 # --- Read full_log
 # url_full_log = 'https://raw.githubusercontent.com/palmkanin/meticuly_dashboard/main/full_log.csv'
 # full_log = pd.read_csv(url_full_log)
-cred_path = "https://raw.githubusercontent.com/palmkanin/meticuly_dashboard/main/cred/ds-workload-monitoring-firebase-adminsdk-770n2-d5e6d1e80a.json"
+cred_path = "cred/ds-workload-monitoring-firebase-adminsdk-770n2-d5e6d1e80a.json"
 
 fb_full_log = "gs://ds-workload-monitoring.appspot.com/full_log.csv"
 full_log = pd.read_csv(fb_full_log,
