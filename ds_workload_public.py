@@ -2,49 +2,44 @@
 from datetime import datetime, timedelta
 from operator import index, mod
 from re import X
+from tabnanny import check
 import time
 from pyparsing import col
 import streamlit as st
 import pandas as pd
+import subprocess
 import numpy as np
 import os
+import sys
+import requests
+from PIL import Image
 
 
 ### --- Time Track --- ###
 start = time.time()
 ### ------------------ ###
-cwd = os.getcwd
-# --- Read full_log
-# url_full_log = 'https://raw.githubusercontent.com/palmkanin/meticuly_dashboard/main/full_log.csv'
-# full_log = pd.read_csv(url_full_log)
-cred_path = "https://raw.githubusercontent.com/palmkanin/meticuly_dashboard/main/cred/ds-workload-monitoring-firebase-adminsdk-770n2-d5e6d1e80a.json"
 
-fb_full_log = "gs://ds-workload-monitoring.appspot.com/full_log.csv"
-full_log = pd.read_csv(fb_full_log,
-                 sep=",",
-                 storage_options={"token": cred_path})
+# --- Read full_log.xlsx
+url_full_log = 'https://raw.githubusercontent.com/palmkanin/meticuly_dashboard/main/full_log.csv'
+# myfile_full_log = requests.get(url_full_log)
 
+# full_log = pd.read_excel(myfile_full_log.content, index_col=0)
+full_log = pd.read_csv(url_full_log)
 full_log = full_log.iloc[:,1:]
 
 # --- Read userID
-# url_userID = 'https://raw.githubusercontent.com/palmkanin/meticuly_dashboard/main/userID.csv'
-# userID = pd.read_csv(url_userID)
+url_userID = 'https://raw.githubusercontent.com/palmkanin/meticuly_dashboard/main/userID.csv'
+# myfile_userID = requests.get(url_userID)
 
-fb_userID = "gs://ds-workload-monitoring.appspot.com/userID.csv"
-userID = pd.read_csv(fb_userID,
-                 sep=",",
-                 storage_options={"token": cred_path})
+# userID = pd.read_excel(myfile_userID.content, index_col=0)
+userID = pd.read_csv(url_userID)
 
 # --- Read em_designer
-# url_em_designer = 'https://raw.githubusercontent.com/palmkanin/meticuly_dashboard/main/em_designer.csv'
-# em_designer = pd.read_csv(url_em_designer)
+url_em_designer = 'https://raw.githubusercontent.com/palmkanin/meticuly_dashboard/main/em_designer.csv'
+# myfile_em_designer = requests.get(url_em_designer)
 
-fb_em_designer = "gs://ds-workload-monitoring.appspot.com/em_designer.csv"
-em_designer = pd.read_csv(fb_em_designer,
-                 sep=",",
-                 storage_options={"token": cred_path})
-
-
+# em_designer = pd.read_excel(myfile_em_designer.content, index_col=0)
+em_designer = pd.read_csv(url_em_designer)
 em_designer = em_designer.iloc[:,1:-2]
 
 em_designer['1'].replace('<NA>',np.nan, regex=True)
