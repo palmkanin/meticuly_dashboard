@@ -121,7 +121,11 @@ with st.expander('Click to see full log.'):
     st.dataframe(display_log_2)
 st.subheader('#')
 
-
+### --- Time Track --- ###
+end = time.time()
+total_run = (end - start)
+st.markdown(f'Total running time: {total_run:.3f} seconds with {full_log_merge.shape[0]:,} results.')
+### ------------------ ###
 
 # --- Designer Loads -------------------------------------------------------------------
 
@@ -146,6 +150,12 @@ start_date_o = datetime.strftime(start_date_o,'%Y-%m-%d')
 
 end_date_o = end_date_o - total_date_o
 end_date_o = datetime.strftime(end_date_o,'%Y-%m-%d')
+
+### --- Time Track --- ###
+end = time.time()
+total_run = (end - start)
+st.markdown(f'Total running time: {total_run:.3f} seconds with {full_log_merge.shape[0]:,} results.')
+### ------------------ ###
 
 st.write("#")
 
