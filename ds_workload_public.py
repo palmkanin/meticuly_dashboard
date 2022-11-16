@@ -13,9 +13,9 @@ import os
 ### --- Time Track --- ###
 start = time.time()
 ### ------------------ ###
+
 # --- Read full_log
-# url_full_log = 'https://raw.githubusercontent.com/palmkanin/meticuly_dashboard/main/full_log.csv'
-# full_log = pd.read_csv(url_full_log)
+
 cred_path = "cred/ds-workload-monitoring-firebase-adminsdk-770n2-d5e6d1e80a.json"
 
 fb_full_log = "gs://ds-workload-monitoring.appspot.com/full_log.csv"
@@ -23,48 +23,21 @@ full_log = pd.read_csv(fb_full_log,
                  sep=",",
                  storage_options={"token": cred_path})
 
-
-### --- Time Track --- ###
-end = time.time()
-total_run = (end - start)
-st.markdown(f'Total running time: {total_run:.3f} seconds with {full_log_merge.shape[0]:,} results.')
-### ------------------ ###
-
-
 full_log = full_log.iloc[:,1:]
 
 # --- Read userID
-# url_userID = 'https://raw.githubusercontent.com/palmkanin/meticuly_dashboard/main/userID.csv'
-# userID = pd.read_csv(url_userID)
 
 fb_userID = "gs://ds-workload-monitoring.appspot.com/userID.csv"
 userID = pd.read_csv(fb_userID,
                  sep=",",
                  storage_options={"token": cred_path})
 
-
-### --- Time Track --- ###
-end = time.time()
-total_run = (end - start)
-st.markdown(f'Total running time: {total_run:.3f} seconds with {full_log_merge.shape[0]:,} results.')
-### ------------------ ###
-
-
 # --- Read em_designer
-# url_em_designer = 'https://raw.githubusercontent.com/palmkanin/meticuly_dashboard/main/em_designer.csv'
-# em_designer = pd.read_csv(url_em_designer)
 
 fb_em_designer = "gs://ds-workload-monitoring.appspot.com/em_designer.csv"
 em_designer = pd.read_csv(fb_em_designer,
                  sep=",",
                  storage_options={"token": cred_path})
-
-
-### --- Time Track --- ###
-end = time.time()
-total_run = (end - start)
-st.markdown(f'Total running time: {total_run:.3f} seconds with {full_log_merge.shape[0]:,} results.')
-### ------------------ ###
 
 em_designer = em_designer.iloc[:,1:-2]
 
@@ -129,8 +102,6 @@ st.set_page_config(
     layout='centered'
 )
 
-
-
 st.title("Design Workload Monitoring :desktop_computer:")
 st.write('###')
 
@@ -178,8 +149,6 @@ st.write("#")
 
 ds_list = ['AS','PH', 'KSAE', 'CB','KPO','PB','NN', 'PBO', 'KSI','KP','TC','NV']
 ds_tabs = st.tabs(ds_list)
-
-
 
 for i in range(len(ds_list)):
 
@@ -237,7 +206,6 @@ for i in range(len(ds_list)):
             
             ## -- Business Day
             bday = pd.bdate_range(start_date, end_date) # some error when use busniness day
-#             bday = pd.date_range(start_date, end_date)
 
             bday_count = len(bday)
             total_bday_loads = bday_count * 8
@@ -284,20 +252,10 @@ for i in range(len(ds_list)):
         result, mood, case_assist, total_design, total_revision, total_manu, ds_loads,start_date_f,end_date_f, row, x_frame = get_o_n(full_log_merge, start_date, end_date) # ---- Current Date Range
         result_o, mood_o, case_assist_o, total_design_o, total_revision_o, total_manu_o, ds_loads_o,start_date_f_o,end_date_f_o, row_o, x_frame_o = get_o_n(full_log_merge, start_date_o, end_date_o) # ---- Previous Date Range
         
-        
-        ### --- Time Track --- ###
-        end = time.time()
-        total_run = (end - start)
-        st.markdown(f'Total running time: {total_run:.3f} seconds with {full_log_merge.shape[0]:,} results.')
-        ### ------------------ ###
-
-        
         total_dur = total_design + total_revision + total_manu
         total_dur_o = total_design_o + total_revision_o + total_manu_o
 
         # --- Display -----------------------------------------------------------------------
-#         st.write('###')
-#         st.caption(f'from {start_date_f} - {end_date_f}')
         st.write('###')
         
         block1, block2 = st.columns(2, gap="small")
@@ -307,12 +265,6 @@ for i in range(len(ds_list)):
             nday = pd.date_range(start_date, end_date)
             nday_count = len(nday)
             
-        
-#             st.write(nday_count)
-#             st.write(bday_count)
-#             num_nday = nday_count - bday_count
-#             num_nday = abs(num_nday)
-#             st.caption(f'selected {len(nday)} days ( {num_nday} normal days | {bday_count} work days)')
             st.caption(f'( selected {nday_count} days )')
             
         with block2:
@@ -327,28 +279,21 @@ for i in range(len(ds_list)):
 
         # # --- Total Cases
         case_delta =  ((case_assist-case_assist_o)/case_assist_o)*100
-        # case_delta = delta_display(case_delta)
 
         # # --- Total Cases
         total_dur_delta =  ((total_dur-total_dur_o)/total_dur_o)*100
         
-        # case_delta = delta_display(case_delta)
         # # --- Total Design
         design_delta = ((total_design-total_design_o)/total_design_o)*100
-        # design_delta = delta_display(design_delta)
         
         # # --- Total Revision
         rev_delta = ((total_revision-total_revision_o)/total_revision_o)*100
-        # rev_delta = delta_display(rev_delta)
 
         # # --- Total Manu
         manu_delta = ((total_manu-total_manu_o)/total_manu_o)*100
-        # manu_delta = delta_display(manu_delta)
         
         # # --- Total Loads
         load_delta = ((ds_loads-ds_loads_o)/ds_loads_o)*100
-        # load_delta = delta_display(load_delta)
-
         
         st.markdown('**Total**')
         
@@ -391,18 +336,6 @@ for i in range(len(ds_list)):
 
 
 st.markdown("""---""")
-##### Refresh -----------------------------------------
-# path = os.getcwd()+'/monday_fetch.py'
-
-# if st.button('Fetch Data'):
-#     with st.spinner('Fetching Monday Data...'):
-#         if subprocess.run([sys.executable, 'monday_fetch.py']):
-#             st.success('Success')
-#             st.experimental_rerun()
-#         else:
-#             st.error('Error to fetch data')
-
-#### --------------------------------------------------
 
 ### --- Time Track --- ###
 end = time.time()
