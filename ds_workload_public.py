@@ -120,12 +120,6 @@ with st.expander('Click to see full log.'):
     st.dataframe(display_log_2)
 st.subheader('#')
 
-### --- Time Track --- ###
-end = time.time()
-total_run = (end - start)
-st.markdown(f'Total running time: {total_run:.3f} seconds with {full_log_merge.shape[0]:,} results.')
-### ------------------ ###
-
 # --- Designer Loads -------------------------------------------------------------------
 
 st.subheader('Designer Loads')
@@ -267,6 +261,14 @@ for i in range(len(ds_list)):
 
         result, mood, case_assist, total_design, total_revision, total_manu, ds_loads,start_date_f,end_date_f, row, x_frame = get_o_n(full_log_merge, start_date, end_date) # ---- Current Date Range
         result_o, mood_o, case_assist_o, total_design_o, total_revision_o, total_manu_o, ds_loads_o,start_date_f_o,end_date_f_o, row_o, x_frame_o = get_o_n(full_log_merge, start_date_o, end_date_o) # ---- Previous Date Range
+        
+        
+        ### --- Time Track --- ###
+        end = time.time()
+        total_run = (end - start)
+        st.markdown(f'Total running time: {total_run:.3f} seconds with {full_log_merge.shape[0]:,} results.')
+        ### ------------------ ###
+
         
         total_dur = total_design + total_revision + total_manu
         total_dur_o = total_design_o + total_revision_o + total_manu_o
