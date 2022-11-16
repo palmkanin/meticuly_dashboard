@@ -23,6 +23,14 @@ full_log = pd.read_csv(fb_full_log,
                  sep=",",
                  storage_options={"token": cred_path})
 
+
+### --- Time Track --- ###
+end = time.time()
+total_run = (end - start)
+st.markdown(f'Total running time: {total_run:.3f} seconds with {full_log_merge.shape[0]:,} results.')
+### ------------------ ###
+
+
 full_log = full_log.iloc[:,1:]
 
 # --- Read userID
@@ -34,6 +42,14 @@ userID = pd.read_csv(fb_userID,
                  sep=",",
                  storage_options={"token": cred_path})
 
+
+### --- Time Track --- ###
+end = time.time()
+total_run = (end - start)
+st.markdown(f'Total running time: {total_run:.3f} seconds with {full_log_merge.shape[0]:,} results.')
+### ------------------ ###
+
+
 # --- Read em_designer
 # url_em_designer = 'https://raw.githubusercontent.com/palmkanin/meticuly_dashboard/main/em_designer.csv'
 # em_designer = pd.read_csv(url_em_designer)
@@ -43,6 +59,12 @@ em_designer = pd.read_csv(fb_em_designer,
                  sep=",",
                  storage_options={"token": cred_path})
 
+
+### --- Time Track --- ###
+end = time.time()
+total_run = (end - start)
+st.markdown(f'Total running time: {total_run:.3f} seconds with {full_log_merge.shape[0]:,} results.')
+### ------------------ ###
 
 em_designer = em_designer.iloc[:,1:-2]
 
