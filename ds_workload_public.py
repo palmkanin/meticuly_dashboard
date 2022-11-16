@@ -13,7 +13,6 @@ import os
 ### --- Time Track --- ###
 start = time.time()
 ### ------------------ ###
-cwd = os.getcwd
 # --- Read full_log
 # url_full_log = 'https://raw.githubusercontent.com/palmkanin/meticuly_dashboard/main/full_log.csv'
 # full_log = pd.read_csv(url_full_log)
