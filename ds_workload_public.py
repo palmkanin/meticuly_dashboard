@@ -217,7 +217,9 @@ for i in range(len(ds_list)):
             elif ds_loadss <= 100:
                 mooda = '😵'
             elif ds_loadss > 100:
-                mooda = '🤢'                
+                mooda = '🤢'
+            else:
+                mooda = '🌙'
 
             ## -- format date
             start_date_f = datetime.strptime(start_date, '%Y-%m-%d')
