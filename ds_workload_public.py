@@ -103,7 +103,7 @@ st.title("Design Workload Monitoring :desktop_computer:")
 st.write('###')
 
 # --- Log Display
-st.subheader('Current Session')
+st.subheader('Live Session 🔴')
 st.dataframe(group_current_log,width=450)
 
 with st.expander('Click to see full log.'):
